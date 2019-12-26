@@ -1,26 +1,86 @@
-/*--------------------------------------------------------------------------------------BOOTSTRAP----------------------------------------------------------------------------------------------------*/
-
-.contenu {
-    height: 100%;
-}
-
-aside {
-    background-color: gray;
-}
-
-@media screen and (max-width:414px)
-/*dispositif media querie pour écrans d'une largeur inférieure à 414px*/
-
-    {
+/* GLOBAL */
+* {
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  
+  /* ELEMENTS */
+  
+  header > p {
+    font-size: 24px;
+    margin-top: auto;
+  }
+  
+  header > img {
+    height: 80px
+    width: 215px;
+  }
+  
+  section > img {
+    height: 100px;
+  }
+  
+  /* CLASSES */
+  .colonne {
+    background: lightgray;
+  }
+  
+  .menu {
+    background: #2b2d2f;
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5%;
+  }
+  
+  .menu .list {
+    display: inline-block;
+    list-style: none;
+  }
+  
+  .link:hover {
+    color: lightgray;
+    text-decoration: none;
+  }
+  
+  .link:link,
+  .link:visited {
+    color: white;
+  }
+  
+  /* RESPONSIVE */
+  @media screen and (max-width: 768px) {
     aside {
-        visibility: hidden;
-        /*la balise aside sera invisible si la résolution d'écran est inférieur à 414px de large*/
+      display: none;
     }
-    tr {
-        font-size: 9px;
+  
+    header > p {
+      font-size: 16px;
+      margin-right: 5%;
     }
-    .slogan 
-    {
-        font-size: 12px;
+  
+    section > img {
+      height: 150px;
     }
-}
+  
+    .menu {
+      padding-right: 10%;
+    }
+  
+    .menu .list {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  
+  /* OVERRIDING */
+  .bg-dark {
+    background-color: #2b2d2f !important;
+  }
+  
+  .nav-link {
+    color: white !important;
+  }
+  
+  .nav-link:hover {
+    color: lightgray !important;
+  }
