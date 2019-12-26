@@ -1,0 +1,45 @@
+@media screen and (max-width:768px) /*dispositif media querie pour écrans d'une largeur inférieure à 768px*/
+{
+    img 
+    {
+        max-width:100%;
+        height:auto;
+    }
+    #invisible
+    {
+        display:none;
+    }
+    h1 
+    {
+        font-size: 30px;
+    }
+    h2 
+    {
+        font-size: 18px;
+    }
+    p 
+    {
+        font-size: 15px;
+    }
+    .slogan 
+    {
+        font-size: 35px;
+    }
+    li 
+    {
+        display: block;/*tous les éléments de li apparaissent les uns en dessous des autres*/
+        font-size: 15px;   
+    }
+    footer, nav
+    {
+        height: 85px;
+    }
+    header
+    {
+        height: 120px;
+    }
+    title 
+    {
+        font-size: 30px;
+    }
+}
