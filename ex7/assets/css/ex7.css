@@ -1,0 +1,26 @@
+/*--------------------------------------------------------------------------------------BOOTSTRAP----------------------------------------------------------------------------------------------------*/
+
+.contenu {
+    height: 100%;
+}
+
+aside {
+    background-color: gray;
+}
+
+@media screen and (max-width:414px)
+/*dispositif media querie pour écrans d'une largeur inférieure à 414px*/
+
+    {
+    aside {
+        visibility: hidden;
+        /*la balise aside sera invisible si la résolution d'écran est inférieur à 414px de large*/
+    }
+    tr {
+        font-size: 9px;
+    }
+    .slogan 
+    {
+        font-size: 12px;
+    }
+}
