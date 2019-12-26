@@ -14,73 +14,73 @@ const verify = () => {
     const isEmail = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/g;
   
     // Gets all the error elements in order to show the elements
-    const lastNameError = document.getElementById("lastNameError");
-    const nameError = document.getElementById("nameError");
-    const postalError = document.getElementById("postalError");
-    const emailError = document.getElementById("emailError");
+    const nomErreur = document.getElementById("nomErreur");
+    const prenomErreur = document.getElementById("prenomErreur");
+    const codePostalErreur = document.getElementById("codePostalErreur");
+    const emailErreur = document.getElementById("emailErreur");
   
     // Gets all the forms element values
-    const lastName = document.getElementsByName("nom")[0].value;
-    const name = document.getElementsByName("prénom")[0].value;
-    const postal = document.getElementsByName("postal")[0].value;
+    const nom = document.getElementsByName("nom")[0].value;
+    const prenom = document.getElementsByName("prenom")[0].value;
+    const codePostal = document.getElementsByName("codePostal")[0].value;
     const email = document.getElementsByName("email")[0].value;
   
     // Checks is lastName is valid and if it's not empty
-    if (isAlpha.test(lastName) === false && lastName !== "") {
-      lastNameError.innerText = "Le nom n'est pas valide.";
-      lastNameError.style.display = "inline";
+    if (isAlpha.test(nom) === false && nom !== "") {
+      nomErreur.innerText = "Le nom n'est pas valide.";
+      nomErreur.style.display = "inline";
       hasErrors[0] = true;
-    } else if (lastName === "") {
-      lastNameError.innerText = "Le nom est requis.";
-      lastNameError.style.display = "inline";
+    } else if (nom === "") {
+      nomErreur.innerText = "Le nom est requis.";
+      nomErreur.style.display = "inline";
       hasErrors[0] = true;
     } else {
-      lastNameError.style.display = "none";
+      nomErreur.style.display = "none";
       hasErrors[0] = false;
     }
   
     // Checks if name is valid and if it's not empty
-    if (isAlpha.test(name) === false && name !== "") {
-      nameError.innerText = "Le prénom n'est pas valide.";
-      nameError.style.display = "inline";
+    if (isAlpha.test(prenom) === false && prenom !== "") {
+      prenomErreur.innerText = "Le prénom n'est pas valide.";
+      prenomErreur.style.display = "inline";
       hasErrors[1] = true;
-    } else if (name === "") {
-      nameError.innerText = "Le prénom est requis.";
-      nameError.style.display = "inline";
+    } else if (prenom === "") {
+      prenomErreur.innerText = "Le prénom est requis.";
+      prenomErreur.style.display = "inline";
       hasErrors[1] = true;
     } else {
-      nameError.style.display = "none";
+      prenomErreur.style.display = "none";
       hasErrors[1] = false;
     }
   
     // Checks if postal is valid and if it's not empty
-    if (isPostal.test(postal) === false && postal !== "") {
-      postalError.innerText = "Le code postal n'est pas valide.";
-      postalError.style.display = "inline";
+    if (isPostal.test(codePostal) === false && codePostal !== "") {
+      codePostalErreur.innerText = "Le code postal n'est pas valide.";
+      codePostalErreur.style.display = "inline";
       hasErrors[2] = true;
     } else {
-      postalError.style.display = "none";
+      codePostalErreur.style.display = "none";
       hasErrors[2] = false;
     }
   
     // Checks if the email is valid and if it's not empty
     if (isEmail.test(email) === false && email !== "") {
-      emailError.innerText = "L'email n'est pas valide.";
-      emailError.style.display = "inline";
+      emailErreur.innerText = "L'email n'est pas valide.";
+      emailErreur.style.display = "inline";
       hasErrors[3] = true;
     } else if (email === "") {
-      emailError.innerText = "L'email est requis.";
-      emailError.style.display = "inline";
+      emailErreur.innerText = "L'email est requis.";
+      emailErreur.style.display = "inline";
       hasErrors[3] = true;
     } else {
-      emailError.style.display = "none";
+      emailErreur.style.display = "none";
       hasErrors[3] = false;
     }
   
     return hasErrors;
   };
   
-  document.getElementById("contactForm").addEventListener("submit", function(e) {
+  document.getElementById("formulaireDeContact").addEventListener("submit", function(e) {
     // Prevents the user from submitting the form
     e.preventDefault();
   
@@ -91,7 +91,7 @@ const verify = () => {
   
     // If the form is valid we then submit it
     if (isValid) {
-      document.getElementById("contactForm").submit();
+      document.getElementById("formulaireDeContact").submit();
     }
   });
   
