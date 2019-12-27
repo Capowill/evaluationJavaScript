@@ -5,6 +5,8 @@
  * Le formulaire ne peut être envoyé que lorsque tout est bon.
  */
 
+// On informe l'utilisateur au fur et à mesure qu'il avance dans le formulaire de la validité ou non de ce qu'il saisi(pour les champs obligatoires)
+
 document.getElementById("nom").addEventListener("blur", function (e) {
     var validiteNom = "";
     var nom = e.target.value;
@@ -14,7 +16,7 @@ document.getElementById("nom").addEventListener("blur", function (e) {
     }
     else if (nom === "") {
         validiteNom = "Vous devez saisir votre nom."
-    } 
+    }
     document.getElementById("aideNom").textContent = validiteNom;
 });
 
@@ -44,57 +46,44 @@ document.getElementById("email").addEventListener("blur", function (e) {
     document.getElementById("aideEMail").textContent = validiteEMail;
 });
 
-function verifForm() // On créé une méga fonction  
-{
-    var invalid = [];
+/* Lorsque l'utilisateur clique sur le bouton submit, la fonction ValidationEvent s'exécute :
+si les données saisies dans les champs obligatoires ne sont pas valides, 
+le formulaire n'est pas envoyé */
+document.getElementById("monFormulaire").addEventListener("submit", ValidationEvent);
 
-    // Gets all the forms element values
-    var nom = document.getElementsByName("nom")[0].value;
-    var prenom = document.getElementsByName("prenom")[0].value;
-    var email = document.getElementsByName("email")[0].value;
+function ValidationEvent() {
+    // On enregistre les valeurs des champs dans des variables 
 
-    //On vérifie que le champs nom est valide (par rapport au regExp) et qu'il n'est pas vide
-    if (regexNom.test(nom) === false && nom !== "") {
-        invalid[0] = true;
-    } else if (nom === "") {
-        invalid[0] = true;
-    } else {
-        invalid[0] = false;
+    var nom = document.getElementById("nom").value;
+    var prenom = document.getElementById("prenom").value;
+    var email = document.getElementById("email").value;
+
+    // Nos RegExp
+    var regexNom = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/;
+    var regexPrenom = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/;
+    var regexEMail = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/g;
+
+    // Conditions
+    if (nom != "" && prenom != "" && email != "") { // On ne veut pas de champs vides
+        if (nom.match(regexNom)) { // condition pour la regExp du nom
+            if (prenom.match(regexPrenom)) { // condition pour la regExp du prenom
+                if (email.match(regexEMail)) { // condition pour la regExp de l'email
+                    if (document.getElementById("masculin").checked || document.getElementById("feminin").checked) { // condition pour que soit coché au moins un sexe
+                        alert("All type of validation has done on OnSubmit event.");
+                        return true;
+                    } else {
+                        alert("Vous devez choisir un genre.....!");
+                        return false;
+                    }
+                } else {
+                    alert("L'adresse mail n'est pas valide...!!!");
+                    return false;
+                }
+            } else {
+                alert("Vous devez remplir tous les champs obligatoires.....!");
+                return false;
+            }
+        }
     }
-
-    // On vérifie que le champs prenom est valide et qu'il n'est pas vide
-    if (regexPrenom.test(prenom) === false && prenom !== "") {
-        invalid[1] = true;
-    } else if (prenom === "") {
-        invalid[1] = true;
-    } else {
-        invalid[1] = false;
-    }
-
-    // On vérifie que le champs email est valide et qu'il n'est pas vide
-    if (regexEMail.test(email) === false && email !== "") {
-        invalid[3] = true;
-    } else if (email === "") {
-        invalid[3] = true;
-    } else {
-        invalid[3] = false;
-    }
-
-    return invalid;
 };
-
-
-document.getElementById("formulaireDeContact").addEventListener("submit", function (e) {
-    // On empêche l'utilisateur de valider son formulaire
-    e.preventDefault();
-
-    // On vérifie la valeur saisie par l'utilisateur
-    var invalid = verifForm();
-    // Si la saisie contient des erreurs on renvoie la valeur false sinon si tout est ok on renvoie la valeur true
-    var valid = invalid.includes(true) ? false : true;
-
-    // Le formulaire est valide(true) donc on peut le soumettre
-    if (valid) {
-        document.getElementById("formulaireDeContact").submit();
-    }
-});
+console.log(ValidationEvent());
