@@ -56,25 +56,25 @@
                 <div class="col-sm-6">
                     <p class="pt-1">* Ces zones sont obligatoires</p>
                     <!--début du formulaire Bootstrap-->
-                    <form novalidate method="POST" action="email.php"> <!--on utilise l'attribut novalidate pour désactiver la validation automatique par le navigateur ; cela permet donc à notre script d'avoir le contrôle sur la validation. Mais cela ne désactive pas la prise en charge par l'API de validation des contraintes ni l'application des pseudo-classes CSS  :valid, :invalid, :in-range et :out-of-range.-->
+                    <form method="POST" action="email.php" id="formulaireDeContact">
                         <fieldset>
                             <legend>Vos coordonnées</legend>
 
                             <div class="form-group">
                                 <label for="nom">Votre nom*</label>
-                                <input class="form-control" type="text" name="nom" />
+                                <input class="form-control" type="text" name="nom"/>
                                 <span class="text-danger" id="nomErreur"></span>
                             </div>
 
                             <div class="form-group">
                                 <label for="prenom">Votre prénom* :</label>
-                                <input class="form-control" type="text" name="prenom" />
+                                <input class="form-control" type="text" name="prenom"/>
                                 <span class="text-danger" id="prenomErreur"></span>
                             </div>
 
                             <div class="form-group">
                                 <label for="dateDeNaissance">Date Naissance* :</label>
-                                <input class="form-control" type="date" name="dateDeNaissance" />
+                                <input class="form-control" type="date" name="dateDeNaissance" value"" required min="1915-01-01" max="2002-01-01"/> <!--L'utilisateur doit avoir au moins 18 ans-->
                             </div>
 
                             <div class="form-check form-check-inline pb-2">
@@ -95,7 +95,6 @@
                             <div class="form-group">
                                 <label for="codePostal">Code postal :</label>
                                 <input class="form-control" type="text" name="codePostal" />
-                                <span class="text-danger" id="codePostalErreur"></span>
                             </div>
 
                             <div class="form-group">
@@ -114,9 +113,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="mail">Email* :</label>
-                                <input class="form-control" type="email" id="mail" name="mail" placeholder="dave.loper@afpa.fr" />
-                                <span class="error" aria-live="polite"></span> <!--L'attribut aria-live garantit que nos messages d'erreur personnalisés seront affichés à tout le monde, y compris les personnes utilisant des techniques d'assistance comme des lecteurs d'écran.-->
+                                <label for="email">Email* :</label>
+                                <input class="form-control" type="text" name="email" placeholder="dave.loper@afpa.fr"/>
+                                <span class="text-danger" id="emailErreur"></span>
                             </div>
 
                         </fieldset>
@@ -126,7 +125,7 @@
 
                             <div class="form-group">
                                 <label for="sujet">Sujet*</label>
-                                <select class="form-control" name="sujet">
+                                <select class="form-control" name="sujet" required>
                                     <option value="">Sélectionnez le sujet de votre demande</option>
                                     <option value="Mes commandes">Mes commandes</option>
                                     <option value="Question sur un produit">Question sur un produit</option>
@@ -137,14 +136,14 @@
 
                             <div class="form-group">
                                 <label>Votre question*</label>
-                                <textarea class="form-control" name="question" rows="3" value=""></textarea>
+                                <textarea class="form-control" name="question" rows="3" value="" required minlength="10" maxlength="500"></textarea>
                             </div>
 
                         </fieldset>
 
                         <div class="form-check pb-2">
                             <label class="form-check-label" for="cgu">
-                                <input class="form-check-input" type="checkbox" name="cgu" />
+                                <input class="form-check-input" type="checkbox" name="cgu" required/>
                                 J'accepte le traitement informatique de ce formulaire.
                             </label>
                         </div>

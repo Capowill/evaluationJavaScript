@@ -67,13 +67,13 @@
     border-color: #900;
     background-color: #FDD;
   }
-  
+
   input:focus:invalid {
     outline: none;
   }
   
   /* MESSAGES PERSONNALISES D'ERREURS */
-  .error {
+  .erreur {
     width  : 100%;
     padding: 0;
    
@@ -86,6 +86,6 @@
     box-sizing: border-box;
   }
   
-  .error.active {
+  .erreur.active {
     padding: 0.3em;
   }
