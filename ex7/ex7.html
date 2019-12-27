@@ -56,20 +56,20 @@
                 <div class="col-sm-6">
                     <p class="pt-1">* Ces zones sont obligatoires</p>
                     <!--début du formulaire Bootstrap-->
-                    <form method="POST" action="page.php" id="formulaireDeContact" onsubmit="return verifForm(this)">
+                    <form>
                         <fieldset>
                             <legend>Vos coordonnées</legend>
 
-                            <div class="form-group">
+                            <div class="form-group" id="formulaireDeContact">
                                 <label for="nom">Votre nom*</label>
-                                <input class="form-control" type="text" name="nom" id="nom"/>
-                                <span class="text-danger" id="nomErreur"></span>
+                                <input class="form-control" type="text" name="nom" id="nom" required/>
+                                <span class="text-danger" id="aideNom"></span>
                             </div>
 
                             <div class="form-group">
                                 <label for="prenom">Votre prénom* :</label>
-                                <input class="form-control" type="text" name="prenom" />
-                                <span class="text-danger" id="prenomErreur"></span>
+                                <input class="form-control" type="text" name="prenom" id="prenom" required/>
+                                <span class="text-danger" id="aidePrenom"></span>
                             </div>
 
                             <div class="form-group">
@@ -114,8 +114,8 @@
 
                             <div class="form-group">
                                 <label for="email">Email* :</label>
-                                <input class="form-control" type="text" name="email" placeholder="dave.loper@afpa.fr"/>
-                                <span class="text-danger" id="emailErreur"></span>
+                                <input class="form-control" type="text" name="email" id="email" placeholder="dave.loper@afpa.fr" required/>
+                                <span class="text-danger" id="aideEMail"></span>
                             </div>
 
                         </fieldset>

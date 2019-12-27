@@ -5,18 +5,48 @@
  * Le formulaire ne peut être envoyé que lorsque tout est bon.
  */
 
+document.getElementById("nom").addEventListener("blur", function (e) {
+    var validiteNom = "";
+    var nom = e.target.value;
+    var regexNom = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/;
+    if (regexNom.test(nom) === false && nom !== "") {
+        validiteNom = "Le nom saisi n'est pas valide.";
+    }
+    else if (nom === "") {
+        validiteNom = "Vous devez saisir votre nom."
+    } 
+    document.getElementById("aideNom").textContent = validiteNom;
+});
+
+document.getElementById("prenom").addEventListener("blur", function (e) {
+    var validitePrenom = "";
+    var prenom = e.target.value;
+    var regexPrenom = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/;
+    if (regexPrenom.test(prenom) === false && prenom !== "") {
+        validitePrenom = "Le prénom saisi n'est pas valide.";
+    }
+    else if (prenom === "") {
+        validitePrenom = "Vous devez saisir votre prénom."
+    }
+    document.getElementById("aidePrenom").textContent = validitePrenom;
+});
+
+document.getElementById("email").addEventListener("blur", function (e) {
+    var validiteEMail = "";
+    var email = e.target.value;
+    var regexEMail = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/g;
+    if (regexEMail.test(email) === false && email !== "") {
+        validiteEMail = "L'adresse mail saisie n'est pas valide.";
+    }
+    else if (email === "") {
+        validiteEMail = "Vous devez saisir votre adresse mail."
+    }
+    document.getElementById("aideEMail").textContent = validiteEMail;
+});
+
 function verifForm() // On créé une méga fonction  
 {
     var invalid = [];
-
-    // RegExp utilisées pour la validation du formulaire
-    var regexNom = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/;
-    var regexMail = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/g;
-
-    // Gets all the error elements in order to show the elements
-    var nomErreur = document.getElementById("nomErreur");
-    var prenomErreur = document.getElementById("prenomErreur");
-    var emailErreur = document.getElementById("emailErreur");
 
     // Gets all the forms element values
     var nom = document.getElementsByName("nom")[0].value;
@@ -25,49 +55,33 @@ function verifForm() // On créé une méga fonction
 
     //On vérifie que le champs nom est valide (par rapport au regExp) et qu'il n'est pas vide
     if (regexNom.test(nom) === false && nom !== "") {
-        nomErreur.innerText = "Le nom saisi n'est pas valide.";
-        nomErreur.style.display = "inline";
         invalid[0] = true;
     } else if (nom === "") {
-        nomErreur.innerText = "Le nom est requis.";
-        nomErreur.style.display = "inline";
         invalid[0] = true;
     } else {
-        nomErreur.style.visibility = "hidden"; // il n'y a pas de message d'erreur qui apparaît car l'element nomErreur ne sera pas affiché
         invalid[0] = false;
     }
 
     // On vérifie que le champs prenom est valide et qu'il n'est pas vide
-    if (regexNom.test(prenom) === false && prenom !== "") {
-        prenomErreur.innerText = "Le prénom saisi n'est pas valide.";
-        prenomErreur.style.display = "inline";
+    if (regexPrenom.test(prenom) === false && prenom !== "") {
         invalid[1] = true;
     } else if (prenom === "") {
-        prenomErreur.innerText = "Le prénom est requis.";
-        prenomErreur.style.display = "inline";
         invalid[1] = true;
     } else {
-        prenomErreur.style.visibility = "hidden";
         invalid[1] = false;
     }
 
     // On vérifie que le champs email est valide et qu'il n'est pas vide
-    if (regexMail.test(email) === false && email !== "") {
-        emailErreur.innerText = "L'email saisi n'est pas valide.";
-        emailErreur.style.display = "inline";
+    if (regexEMail.test(email) === false && email !== "") {
         invalid[3] = true;
     } else if (email === "") {
-        emailErreur.innerText = "L'email est requis.";
-        emailErreur.style.display = "inline";
         invalid[3] = true;
     } else {
-        emailErreur.style.visibility = "hidden";
         invalid[3] = false;
     }
 
     return invalid;
 };
-
 
 
 document.getElementById("formulaireDeContact").addEventListener("submit", function (e) {
