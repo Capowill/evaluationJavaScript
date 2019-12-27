@@ -56,7 +56,7 @@
                 <div class="col-sm-6">
                     <p class="pt-1">* Ces zones sont obligatoires</p>
                     <!--début du formulaire Bootstrap-->
-                    <form novalidate> <!--on utilise l'attribut novalidate pour désactiver la validation automatique par le navigateur ; cela permet donc à notre script d'avoir le contrôle sur la validation. Mais cela ne désactive pas la prise en charge par l'API de validation des contraintes ni l'application des pseudo-classes CSS  :valid, :invalid, :in-range et :out-of-range.-->
+                    <form novalidate method="POST" action="email.php"> <!--on utilise l'attribut novalidate pour désactiver la validation automatique par le navigateur ; cela permet donc à notre script d'avoir le contrôle sur la validation. Mais cela ne désactive pas la prise en charge par l'API de validation des contraintes ni l'application des pseudo-classes CSS  :valid, :invalid, :in-range et :out-of-range.-->
                         <fieldset>
                             <legend>Vos coordonnées</legend>
 
