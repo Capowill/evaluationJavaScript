@@ -15,33 +15,23 @@
     width: 215px;
   }
   
-  section > img {
-    height: 248px;
-  }
-  
   /* CLASSES */
-  .colonne {
-    background: lightgray;
-  }
-  
   .menu {
     background: #2b2d2f;
     color: white;
     display: flex;
     justify-content: center;
-    margin-bottom: 0.5%;
   }
-  
+
   .menu .list {
     display: inline-block;
     list-style: none;
   }
-  
-  .link:hover {
-    color: lightgray;
-    text-decoration: none;
+
+  .nav-link {
+    color: white !important;
   }
-  
+
   .link:link,
   .link:visited {
     color: white;
@@ -54,7 +44,7 @@
     }
   
     header > p {
-      font-size: 16px;
+      font-size: 18px;
       margin-right: 5%;
     }
   
@@ -71,16 +61,31 @@
       flex-direction: column;
     }
   }
-  
-  /* OVERRIDING */
-  .bg-dark {
-    background-color: #2b2d2f !important;
+
+/* règles de mise en forme pour les champs invalides */
+input.invalid{
+    border-color: #900;
+    background-color: #FDD;
   }
   
-  .nav-link {
-    color: white !important;
+  input:focus.invalid {
+    outline: none;
   }
   
-  .nav-link:hover {
-    color: lightgray !important;
+  /*règles utilisées pour les messages d'erreur */
+  .error {
+    width  : 100%;
+    padding: 0;
+   
+    font-size: 80%;
+    color: white;
+    background-color: #900;
+    border-radius: 0 0 5px 5px;
+   
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  .error.active {
+    padding: 0.3em;
   }
