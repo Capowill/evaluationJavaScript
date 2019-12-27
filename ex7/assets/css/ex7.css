@@ -1,4 +1,4 @@
-/* GLOBAL */
+/* DOCUMENT */
 * {
     font-family: Helvetica, Arial, sans-serif;
   }
@@ -62,17 +62,17 @@
     }
   }
 
-/* règles de mise en forme pour les champs invalides */
-input.invalid{
+  /* CHAMPS INVALIDES */
+  input:invalid{
     border-color: #900;
     background-color: #FDD;
   }
   
-  input:focus.invalid {
+  input:focus:invalid {
     outline: none;
   }
   
-  /*règles utilisées pour les messages d'erreur */
+  /* MESSAGES PERSONNALISES D'ERREURS */
   .error {
     width  : 100%;
     padding: 0;

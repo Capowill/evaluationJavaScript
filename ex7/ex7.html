@@ -56,7 +56,7 @@
                 <div class="col-sm-6">
                     <p class="pt-1">* Ces zones sont obligatoires</p>
                     <!--début du formulaire Bootstrap-->
-                    <form method="POST" action="email.php" id="formulaireDeContact">
+                    <form novalidate> <!--on utilise l'attribut novalidate pour désactiver la validation automatique par le navigateur ; cela permet donc à notre script d'avoir le contrôle sur la validation. Mais cela ne désactive pas la prise en charge par l'API de validation des contraintes ni l'application des pseudo-classes CSS  :valid, :invalid, :in-range et :out-of-range.-->
                         <fieldset>
                             <legend>Vos coordonnées</legend>
 
@@ -114,9 +114,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="email">Email* :</label>
-                                <input class="form-control" type="text" name="email" placeholder="dave.loper@afpa.fr" />
-                                <span class="text-danger" id="emailErreur"></span>
+                                <label for="mail">Email* :</label>
+                                <input class="form-control" type="email" id="mail" name="mail" placeholder="dave.loper@afpa.fr" />
+                                <span class="error" aria-live="polite"></span> <!--L'attribut aria-live garantit que nos messages d'erreur personnalisés seront affichés à tout le monde, y compris les personnes utilisant des techniques d'assistance comme des lecteurs d'écran.-->
                             </div>
 
                         </fieldset>
