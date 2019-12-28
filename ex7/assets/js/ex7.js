@@ -119,7 +119,7 @@ function verifEMail(champ)
         return true;
     }
 };
-
+//Mega fonction
 function verifForm(f)
 {
     var nomOk = verifNom(f.nom);
