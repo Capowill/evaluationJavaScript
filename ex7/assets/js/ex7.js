@@ -17,22 +17,33 @@ function surligne(champ, erreur)
     {
     champ.style.backgroundColor = ""; //Pour effacer le coloriage
     }
-}
+};
 
 function verifNom(champ)
 {
+    var aideNom = document.getElementbyId("aideNom")
     var regexNom = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/;
-    if (!regexNom.test(champ.value))
+    if (!regexNom.test(champ.value)) // On utilise la methode test de notre regExp sur le texte saisi par l'utilisateur dans le champ nom. Si elle renvoie true cela signifie que les conditions de notre regExp ne sont pas respectées
     {
-        surligne(champ, true);
-        return false;
+        aideNom.innerText = "Le nom saisi n'est pas valide.";
+        aideNom.style.display ="inline";
+        surligne(champ, true); // on appelle la fonction surligne avec true en deuxième paramètre donc notre champ est coloré
+        return false; // on renvoie false pour notre fonction verifNom
+    }
+    else if (nom === "") // On s'assure que le champ n'est pas laissé vide par l'utilisateur
+    {
+        aideNom.innerText = "Vous devez saisir votre nom."
+        aideNom.style.display = "inline";
+        surligne(champ, true); // on appelle la fonction surligne avec true en deuxième paramètre donc notre champ est coloré
+        return false; // on renvoie false pour notre fonction verifNom
     }
     else
     {
-        surligne(champ, false);
-        return true;
+        aideNom.style.display = "none";
+        surligne(champ, false); // on appelle la fonction surligne avec false en deuxième paramètre donc notre champ n'est pas coloré
+        return true; // on renvoie true pour notre fonction verifNom
     }
-}
+};
 
 function verifPrenom(champ)
 {
@@ -42,17 +53,7 @@ function verifPrenom(champ)
         surligne(champ, true);
         return false;
     }
-    else
-    {
-        surligne(champ, false);
-        return true;
-    }
-}
-
-function verifEMail(champ)
-{
-    var regexEMail = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/g;
-    if (!regexEMail.test(champ.value))
+    else if (prenom === "")
     {
         surligne(champ, true);
         return false;
@@ -62,7 +63,27 @@ function verifEMail(champ)
         surligne(champ, false);
         return true;
     }
-}
+};
+
+function verifEMail(champ)
+{
+    var regexEMail = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/g;
+    if (!regexEMail.test(champ.value))
+    {
+        surligne(champ, true);
+        return false;
+    }
+    else if (email === "")
+    {
+        surligne(champ, true);
+        return false;
+    }
+    else
+    {
+        surligne(champ, false);
+        return true;
+    }
+};
 
 function verifForm(f)
 {
@@ -78,7 +99,7 @@ function verifForm(f)
     {
         return false;
     }
-}
+};
 
 /*
 document.getElementById("nom").addEventListener("blur", function (e) {
