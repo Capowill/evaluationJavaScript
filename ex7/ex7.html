@@ -56,11 +56,11 @@
                 <div class="col-sm-6">
                     <p class="pt-1">* Ces zones sont obligatoires</p>
                     <!--début du formulaire Bootstrap-->
-                    <form>
+                    <form action="page.php" onsubmit="return verifForm(this)"> <!-- On bloque l'envoi si le formulaire est mal rempli : la fonction verifForm renverra false quand le formulaire tentera d'être envoyé par l'utilisateur-->>
                         <fieldset>
                             <legend>Vos coordonnées</legend>
 
-                            <div class="form-group" action="page.php" onsubmit="return verifForm(this)"> <!-- On bloque l'envoi si le formulaire est mal rempli : la fonction verifForm renverra false quand le formulaire tentera d'être envoyé par l'utilisateur-->
+                            <div class="form-group">
                                 <label for="nom">Votre nom*</label>
                                 <input class="form-control" type="text" name="nom" id="nom" onblur="verifNom(this)"/><!-- On appelle notre fonction qui va verifier la validation des données saisies par l'utilisateur dans le champ nom au moment où ce champ perd le focus (onblur)-->
                                 <span class="text-danger" id="aideNom"></span>
