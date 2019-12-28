@@ -60,15 +60,15 @@
                         <fieldset>
                             <legend>Vos coordonnées</legend>
 
-                            <div class="form-group" action="#" method="post" id="monFormulaire" onsubmit="validationEvent()">
+                            <div class="form-group" action="page.php" onsubmit="return verifForm(this)"> <!-- On bloque l'envoi si le formulaire est mal rempli-->
                                 <label for="nom">Votre nom*</label>
-                                <input class="form-control" type="text" name="nom" id="nom" required/>
+                                <input class="form-control" type="text" name="nom" id="nom" onblur="verifNom(this)"/><!-- On appelle notre fonction qui va verifier la validation des données saisies par l'utilisateur dans le champ nom au moment où ce champ perd le focus (onblur)-->
                                 <span class="text-danger" id="aideNom"></span>
                             </div>
 
                             <div class="form-group">
                                 <label for="prenom">Votre prénom* :</label>
-                                <input class="form-control" type="text" name="prenom" id="prenom" required/>
+                                <input class="form-control" type="text" name="prenom" id="prenom" onblur="verifPrenom(this)"/><!-- On appelle notre fonction qui va verifier la validation des données saisies par l'utilisateur dans le champ prenom au moment où ce champ perd le focus (onblur)-->
                                 <span class="text-danger" id="aidePrenom"></span>
                             </div>
 
@@ -114,7 +114,7 @@
 
                             <div class="form-group">
                                 <label for="email">Email* :</label>
-                                <input class="form-control" type="text" name="email" id="email" placeholder="dave.loper@afpa.fr" required />
+                                <input class="form-control" type="text" name="email" id="email" placeholder="dave.loper@afpa.fr" onblur="verifEMail(this)" /><!-- On appelle notre fonction qui va verifier la validation des données saisies par l'utilisateur dans le champ email au moment où ce champ perd le focus (onblur)-->
                                 <span class="text-danger" id="aideEMail"></span>
                             </div>
 

@@ -6,7 +6,81 @@
  */
 
 // On informe l'utilisateur au fur et à mesure qu'il avance dans le formulaire de la validité ou non de ce qu'il saisi(pour les champs obligatoires)
+// Afin d'informer l'utilisateur de son erreur on va colorer le champ en rouge pâle
+function surligne(champ, erreur)
+{
+    if (erreur) // si le second parametre de notre fonction vaut true, la fonction colore le champ
+    {
+    champ.style.backgroundColor = "#fba";
+    }
+    else
+    {
+    champ.style.backgroundColor = ""; //Pour effacer le coloriage
+    }
+}
 
+function verifNom(champ)
+{
+    var regexNom = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/;
+    if (!regexNom.test(champ.value))
+    {
+        surligne(champ, true);
+        return false;
+    }
+    else
+    {
+        surligne(champ, false);
+        return true;
+    }
+}
+
+function verifPrenom(champ)
+{
+    var regexPrenom = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/;
+    if (!regexPrenom.test(champ.value))
+    {
+        surligne(champ, true);
+        return false;
+    }
+    else
+    {
+        surligne(champ, false);
+        return true;
+    }
+}
+
+function verifEMail(champ)
+{
+    var regexEMail = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/g;
+    if (!regexEMail.test(champ.value))
+    {
+        surligne(champ, true);
+        return false;
+    }
+    else
+    {
+        surligne(champ, false);
+        return true;
+    }
+}
+
+function verifForm(f)
+{
+    var nomOk = verifNom(f.nom);
+    var prenomOk = verifPrenom(f.prenom);
+    var eMailOk = verifEMail(f.email);
+
+    if (nomOk && prenomOk && eMailOk)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+/*
 document.getElementById("nom").addEventListener("blur", function (e) {
     var validiteNom = "";
     var nom = e.target.value;
@@ -46,9 +120,9 @@ document.getElementById("email").addEventListener("blur", function (e) {
     document.getElementById("aideEMail").textContent = validiteEMail;
 });
 
-/* Lorsque l'utilisateur clique sur le bouton submit, la fonction ValidationEvent s'exécute :
+Lorsque l'utilisateur clique sur le bouton submit, la fonction ValidationEvent s'exécute :
 si les données saisies dans les champs obligatoires ne sont pas valides, 
-le formulaire n'est pas envoyé */
+le formulaire n'est pas envoyé 
 document.getElementById("monFormulaire").addEventListener("submit", ValidationEvent);
 
 function ValidationEvent() {
@@ -87,3 +161,4 @@ function ValidationEvent() {
     }
 };
 console.log(ValidationEvent());
+*/
