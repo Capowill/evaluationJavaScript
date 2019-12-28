@@ -59,15 +59,3 @@ header>img {
         flex-direction: column;
     }
 }
-
-/* CHAMPS INVALIDES (Validation HTML)*/
-
-input:invalid {
-    box-shadow: 0 0 5px 1px red;
-    border-color: #900;
-    background-color: #FDD;
-}
-
-input:focus:invalid {
-    outline: none;
-}
