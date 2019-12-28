@@ -60,7 +60,7 @@
                         <fieldset>
                             <legend>Vos coordonnées</legend>
 
-                            <div class="form-group" action="page.php" onsubmit="return verifForm(this)"> <!-- On bloque l'envoi si le formulaire est mal rempli-->
+                            <div class="form-group" action="page.php" onsubmit="return verifForm(this)"> <!-- On bloque l'envoi si le formulaire est mal rempli : la fonction verifForm renverra false quand le formulaire tentera d'être envoyé par l'utilisateur-->
                                 <label for="nom">Votre nom*</label>
                                 <input class="form-control" type="text" name="nom" id="nom" onblur="verifNom(this)"/><!-- On appelle notre fonction qui va verifier la validation des données saisies par l'utilisateur dans le champ nom au moment où ce champ perd le focus (onblur)-->
                                 <span class="text-danger" id="aideNom"></span>
@@ -78,7 +78,7 @@
                             </div>
 
                             <div class="form-check form-check-inline pb-2">
-                                <label class="form-check-label" for="sexe">Sexe* :</label>
+                                <label class="form-check-label" for="sexe" required>Sexe* :</label>
 
                                 <input class="form-check-input" type="radio" name="sexe" id="feminin" />
                                 Féminin
