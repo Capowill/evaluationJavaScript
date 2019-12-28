@@ -56,13 +56,13 @@
                 <div class="col-sm-6">
                     <p class="pt-1">* Ces zones sont obligatoires</p>
                     <!--début du formulaire Bootstrap-->
-                    <form method="post" action="page.php" onsubmit="return verifForm(this)">
+                    <form method="post" action="page.php" onsubmit="return verifForm(this)"> <!--pour autoriser ou bloquer l'envoi du formulaire on appelle notre méga-fonction verifForm (qui va appeler nos trois fonctions) au moment où l'utilisateur envoi son formulaire. Si la méga-fonction (donc au moins une de nos trois fonctions) renvoi false, nous bloquons l'envoi des données-->
                         <fieldset>
                             <legend>Vos coordonnées</legend>
 
                             <div class="form-group">
                                 <label for="nom">Votre nom*</label>
-                                <input class="form-control" type="text" name="nom" id="nom" onblur="verifNom(this)" />
+                                <input class="form-control" type="text" name="nom" id="nom" onblur="verifNom(this)" /> <!-- on appelle notre fonction verifNom au moment où le champ nom perd le focus (onblur)-->
                                 <span class="text-danger" id="aideNom"></span>
                             </div>
 
